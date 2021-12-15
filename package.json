@@ -1,0 +1,16 @@
+{
+    "name": "node-api",
+    "version": "1.0.0",
+    "main": "server.js",
+    "author": "jenna-adams",
+    "dependencies": {
+        "express": "~4.0.0",
+        "body-parser": "~1.0.1"
+    },
+    "keywords": [
+        "heroku"
+    ],
+    "engines": {
+        "node": "16.13.1"
+    }
+}
