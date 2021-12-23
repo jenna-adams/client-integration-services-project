@@ -2,36 +2,24 @@
 
 // call the packages needed
 
-var express     =require('express');    // call express
-var app         =require();             // define app using express
-var bodyParset  =require('body-parser');
-const bodyParser = require('body-parser');
+import express from 'express';   // call express or us import express from 'express' if type (in package) is set to 'module'
+const app = express();             // define app using express
+import bodyParser from 'body-parser';
+import usersRoutes from './routes/users.js';
 
-// configure app to use bodyParser()
-// this will let us get the data from a POST
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
 
-var port = process.env.PORT || 8080;    // set port
+//const port = process.env.PORT || 443;    // set port
+const PORT1 = 443;
+app.use(bodyParser.json());  // will be using json data in the app
+
+app.use('/users', usersRoutes);
 
 // Routes for API
 // ======================================================================
 
-var router = express.Router();          // get an instance of the express Router
-
-// test route to make sure everything is working
-router.get('/', function(req, res)
-{
-    res.json({message: 'Yay!! Welcome to my api!'});
-});
-
-// more routes for the api
-
-// RESISTER ROUTES
-// all routes will be prefixed with /api
-app.use('/jenna-api', router);
+app.get('/', (req, res) => res.send('Hello from Homepage.'));
 
 // START THE SERVER
 // ======================================================================
-app.listen(port);
-console.log('Magic happens on port ' + port);
+
+app.listen(PORT1, () => console.log(`Server Running on port: http://localhost:${PORT1}`));

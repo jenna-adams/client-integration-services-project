@@ -1,16 +1,35 @@
 {
-    "name": "node-api",
-    "version": "1.0.0",
-    "main": "server.js",
-    "author": "jenna-adams",
-    "dependencies": {
-        "express": "~4.0.0",
-        "body-parser": "~1.0.1"
-    },
-    "keywords": [
-        "heroku"
-    ],
-    "engines": {
-        "node": "16.13.1"
-    }
+  "name": "jennas-tooling-project-api",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "author": "Jenna Adams <jenna.adams@eleostech.com>",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.15",
+    "pg": "^8.7.1",
+    "uuid": "^8.3.2"
+  },
+  "keywords": [
+    "heroku"
+  ],
+  "engines": {
+    "node": "16.13.1"
+  },
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jenna-adams/client-integration-services-project.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jenna-adams/client-integration-services-project/issues"
+  },
+  "homepage": "https://github.com/jenna-adams/client-integration-services-project#readme"
 }
