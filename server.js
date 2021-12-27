@@ -8,7 +8,7 @@ import bodyParser from 'body-parser';
 import usersRoutes from './routes/users.js';
 
 
-const PORT1 = 8080;
+const PORT1 = process.env.PORT || 8080;
 app.use(bodyParser.json());  // will be using json data in the app
 
 app.use('/users', usersRoutes);
