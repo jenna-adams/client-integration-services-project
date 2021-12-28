@@ -16,9 +16,6 @@
   "keywords": [
     "heroku"
   ],
-  "engines": {
-    "node": "16.13.1"
-  },
   "scripts": {
     "start": "nodemon server.js"
   },
