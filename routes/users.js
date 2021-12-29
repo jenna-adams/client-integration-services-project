@@ -1,6 +1,6 @@
 import express from 'express';
 
-import {getUsers, createUser, getUser, deleteUser, patchUser} from '../controllers/usersControllers.js';
+import {getUsers, createUser, getUser, deleteUser, putUser} from '../controllers/usersControllers.js';
 
 
 const router = express.Router();    //initalize router
@@ -20,7 +20,7 @@ router.delete('/:id', deleteUser);
 
 
 // patch updates a user
-router.patch('/:id', patchUser);
+router.put('/:id', putUser);
 
 
 

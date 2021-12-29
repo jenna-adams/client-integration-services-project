@@ -51,22 +51,32 @@ export const deleteUser = (req, res) => {
             res.status(200).send("User removed, well done!");
         })
     });
-    //users = users.filter((user) => user.id !== id);
-
-    //res.send(`user with the id ${id} deleted from the database`);
 };
 
-export const patchUser = (req, res) => {
-    const { id } = req.params;
-    const { firstName, lastName, age } = req.body;
+export const putUser = (req, res) => {
+    const id = parseInt(req.params.id);
+    const { firstName } = req.body;
 
-    const user = users.find((user) => user.id === id);
+    pool.query(queries.checkUserId, [id], (error, results) => {
+        const noUserFound = !results.rows.length;
+        if (noUserFound) {
+            res.send("User does not exsit.");
+        }
 
+        pool.query(queries.updateUser, [firstName, id], (error, results) =>{
+            if (error) throw error;
+            res.status(200).send(`User with the id ${id} has been updated`);
+        });
+    });
+
+    //const user = users.find((user) => user.id === id);
+/*
     if (firstName) user.firstName = firstName;
     if (lastName) user.lastName = lastName;
     if (age) user.age = age;
 
     res.send(`User with the id ${id} has been updated`);
+*/
 };
 
 
