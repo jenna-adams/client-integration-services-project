@@ -4,9 +4,6 @@ import queries from '../routes/queries.js';
 
 //let key = "DaMubrFe55czTp8zsORTdZU2LtwXMURs9EVI3i4x3s8";
 
-let users = [];
-
-
 export const getUsers =  (req, res) => {
     pool.query(queries.getUsers, (error, results) => {
         if (error) throw error;
