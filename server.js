@@ -1,16 +1,5 @@
 // connect to the database
 
-// https://devcenter.heroku.com/articles/getting-started-with-nodejs#provision-a-database
-import pg from 'pg';
-import dotenv from 'dotenv';
-const {Pool} = pg;
-dotenv.config();
-const databaseConfig = {connectionString: process.env.DATABASE_URL};
-const pool = new Pool(databaseConfig);
-
-export default pool;
-
-
 // configure the application and create routes
 
 // call the packages needed
@@ -19,14 +8,14 @@ import express from 'express';   // call express or us import express from 'expr
 const app = express();             // define app using express
 import bodyParser from 'body-parser';
 import usersRoutes from './routes/users.js';
-import dbRoutes from './routes/database.js';
 
 
 const PORT = process.env.PORT || 8080;
 app.use(bodyParser.json());  // will be using json data in the app
 
+app.use(express.json());
+
 app.use('/users', usersRoutes);
-app.use('/db', dbRoutes);
 
 // Routes for API
 // ======================================================================
