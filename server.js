@@ -10,7 +10,7 @@ import bodyParser from 'body-parser';
 import usersRoutes from './routes/users.js';
 
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 80;
 app.use(bodyParser.json());  // will be using json data in the app
 
 app.use(express.json());
