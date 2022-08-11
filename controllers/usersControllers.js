@@ -23,7 +23,10 @@ export const createUser = (req, res) => {
         }
         //add user to db
         pool.query(queries.addUserToDb, [id, firstname, lastname, age], (error, results) => {
-            if (error) throw error;
+            if (error) {
+                res.send("There is an error");
+                throw error;
+            }
             res.status(201).send("user created, well done!");
         })
     });
@@ -32,7 +35,10 @@ export const createUser = (req, res) => {
 export const getUser = (req, res) => {
     const id = parseInt(req.params.id);
     pool.query(queries.getUser, [id], (error, results) => {
-        if (error) throw error;
+        if (error) {
+            res.send("There is an error");
+            throw error;
+        }
         res.status(200).json(results.rows);
     })
 };
@@ -47,7 +53,10 @@ export const deleteUser = (req, res) => {
         }
 
         pool.query(queries.removeUser, [id], (error, results) => {
-            if(error) throw error;
+            if (error) {
+                res.send("There is an error");
+                throw error;
+            }
             res.status(200).send("User removed, well done!");
         })
     });
@@ -64,7 +73,10 @@ export const putUser = (req, res) => {
         }
 
         pool.query(queries.updateUser, [firstName, id], (error, results) =>{
-            if (error) throw error;
+            if (error) {
+                res.send("There is an error");
+                throw error;
+            }
             res.status(200).send(`User with the id ${id} has been updated`);
         });
     });
