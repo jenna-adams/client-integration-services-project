@@ -4,9 +4,12 @@ import queries from '../routes/queries.js';
 
 //let key = "DaMubrFe55czTp8zsORTdZU2LtwXMURs9EVI3i4x3s8";
 
-export const getUsers =  (req, res) => {
+export const getUsers = (req, res) => {
     pool.query(queries.getUsers, (error, results) => {
-        if (error) throw error;
+        if (error) {
+            res.send("There is an error");
+        }
+            throw error;
         res.status(200).json(results.rows);
     });
 };
