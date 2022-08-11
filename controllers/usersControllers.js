@@ -8,8 +8,8 @@ export const getUsers = (req, res) => {
     pool.query(queries.getUsers, (error, results) => {
         if (error) {
             res.send("There is an error");
-        }
             throw error;
+        }
         res.status(200).json(results.rows);
     });
 };
