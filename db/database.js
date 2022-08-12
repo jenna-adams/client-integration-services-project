@@ -1,13 +1,27 @@
 import pg from 'pg';
 import dotenv from 'dotenv';
-const {Pool} = pg;
+// const {Pool} = pg;
+// dotenv.config();
+// const pool = new Pool({
+//   user: "postgres",
+//   host: "localhost",
+//   database: "postgres",
+//   password: "jenna",
+//   port: 8080
+// });
+
+// export default pool;
+
+
+const {Client} = pg;
 dotenv.config();
-const pool = new Pool({
-  user: process.env.USER,// || "postgres",
-  host: process.env.HOST,// || "localhost",
-  database: process.env.DATABASE,// || "postgres",
-  password: process.env.PASSWORD,// || "jenna",
-  port: process.env.PORT,// || 5432
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
-export default pool;
+client.connect();
+
+export default client;
