@@ -15,7 +15,7 @@ export const getUsers = (req, res) => {
 };
 
 export const createUser = (req, res) => {
-    const { id, firstName, lastame, age } = req.body;
+    const { id, firstName, lastName, age } = req.body;
     //check if id exists
     client.query(queries.checkUserId, [id], (error, results) => {
         if (results.rows.length) {
