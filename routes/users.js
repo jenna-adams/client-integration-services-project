@@ -9,7 +9,7 @@ const router = express.Router();    //initalize router
 router.get('/', getUsers);
 
 
-// overrides old info or creates new info
+// creates new info
 router.post('/', createUser);
 
 

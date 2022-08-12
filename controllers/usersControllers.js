@@ -15,20 +15,22 @@ export const getUsers = (req, res) => {
 };
 
 export const createUser = (req, res) => {
-    const { id, firstname, lastname, age } = req.body;
+    const { id, firstName, lastame, age } = req.body;
     //check if id exists
     client.query(queries.checkUserId, [id], (error, results) => {
         if (results.rows.length) {
             res.send("id already exists.");
         }
-        //add user to db
-        client.query(queries.addUserToDb, [id, firstname, lastname, age], (error, results) => {
-            if (error) {
-                res.send("There is an error/ create user");
-                throw error;
-            }
-            res.status(201).send("user created, well done!");
-        })
+        else{
+            //add user to db
+            client.query(queries.addUserToDb, [id, firstName, lastName, age], (error, results) => {
+                if (error) {
+                    res.send("There is an error/ create user");
+                    throw error;
+                }
+                res.status(201).send(`Created User ${firstName}`);
+            })
+        }
     });
 };
 
