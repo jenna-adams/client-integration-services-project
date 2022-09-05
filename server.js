@@ -13,6 +13,7 @@ import usersRoutes from './routes/users.js';
 const PORT = process.env.PORT || 5432;
 app.use(bodyParser.json());  // will be using json data in the app
 
+// middleware
 app.use(express.json());
 
 app.use('/users', usersRoutes);

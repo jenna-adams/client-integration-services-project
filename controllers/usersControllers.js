@@ -35,8 +35,8 @@ export const createUser = (req, res) => {
 };
 
 export const getUser = (req, res) => {
-    const id = parseInt(req.params.id);
-    client.query(queries.getUser, [id], (error, results) => {
+    const username = parseInt(req.params.username);
+    client.query(queries.getUser, [username], (error, results) => {
         if (error) {
             res.send("There is an error/ get user");
             throw error;
