@@ -14,28 +14,28 @@ export const getUsers = (req, res) => {
     });
 };
 
-export const createUser = (req, res) => {
-    const { id, firstName, lastName, age } = req.body;
-    //check if id exists
-    client.query(queries.checkUserId, [id], (error, results) => {
-        if (results.rows.length) {
-            res.send("id already exists.");
-        }
-        else{
-            //add user to db
-            client.query(queries.addUserToDb, [id, firstName, lastName, age], (error, results) => {
-                if (error) {
-                    res.send("There is an error/ create user");
-                    throw error;
-                }
-                res.status(201).send(`Created User ${firstName}`);
-            })
-        }
-    });
-};
+// export const createUser = (req, res) => {
+//     const { fullName, api_token, menu_code, dashboard_code, custom_settings_form_code, theme, username } = req.body;
+//     //check if id exists
+//     client.query(queries.checkUserId, [id], (error, results) => {
+//         if (results.rows.length) {
+//             res.send("id already exists.");
+//         }
+//         else{
+//             //add user to db
+//             client.query(queries.addUserToDb, [id, firstName, lastName, age], (error, results) => {
+//                 if (error) {
+//                     res.send("There is an error/ create user");
+//                     throw error;
+//                 }
+//                 res.status(201).send(`Created User ${firstName}`);
+//             })
+//         }
+//     });
+// };
 
 export const getUser = (req, res) => {
-    const username = parseInt(req.params.username);
+    const { username } = req.body;
     client.query(queries.getUser, [username], (error, results) => {
         if (error) {
             res.send("There is an error/ get user auth");

@@ -29,7 +29,7 @@ router
                 var decodedToken = jwtDecode(token)
                 var userToken = Object.values(decodedToken)
                 var userInfo
-                client.query(queries.getUser, [userToken], (error, results) => {
+                client.query(queries.getUserWithToken, [userToken], (error, results) => {
                     if (error) {
                         res.send("There is an error/ get user auth");
                         throw error;
