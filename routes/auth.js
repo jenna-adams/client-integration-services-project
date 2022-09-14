@@ -7,6 +7,16 @@ import { user } from "pg/lib/defaults";
 // set router
 const router = express.Router();
 
+const EnumType = {
+    apiToken : 1,
+    fullName : 2,
+    dashboard : 3,
+    menu : 4,
+    settingForm : 5,
+    theme : 6,
+    username : 7
+ }
+
 router
     .get('authenticate/:token', async (req, res) => {
         if(req.headers["eleos-platform-key"] != process.env.ELEOS_PLATFORM_KEY) {
@@ -14,16 +24,27 @@ router
           }
         else {
             try{
-                export const getUser = (req, res) => {
-                    const username = parseInt(req.params.username);
-                    client.query(queries.getUser, [username], (error, results) => {
-                        if (error) {
-                            res.send("There is an error/ get user");
-                            throw error;
-                        }
-                        res.status(200).json(results.row);
-                    })
-                };
+                const token = req.params.token
+                var decodedToken = jwtDecode(token)
+                var userToken = Object.values(decodedToken)
+                var userInfo
+                client.query(queries.getUser, [userToken], (error, results) => {
+                    if (error) {
+                        res.send("There is an error/ get user auth");
+                        throw error;
+                    }
+                    userInfo = json(results.rows);
+                })
+
+                const response = {
+                    api_token : token,
+                    full_name : userInfo[fullName],
+                    menu_code : userInfo[menu],
+                    dashboard_code : userInfo[dashboard],
+                    custom_settings_form_code : userInfo[settingForm],
+                    theme : userInfo[theme],
+                    username : user[username] 
+                }
             }catch(err){
                 res.status(400).send(err);
             }
