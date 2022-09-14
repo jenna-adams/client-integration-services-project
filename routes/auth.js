@@ -21,8 +21,7 @@ const EnumType = {
     username : 7
  }
 
-router
-    .get('authenticate/:token', async (req, res) => {
+router.get('authenticate/:token', async (req, res) => {
         if(req.headers["eleos-platform-key"] != process.env.ELEOS_PLATFORM_KEY) {
             res.status(401).send("401: Invalid Eleos Platform Key!!");
           }
@@ -51,6 +50,8 @@ router
                     theme : userInfo[theme],
                     username : user[username] 
                 }
+                res.status(200).send(userInfo);
+
             }catch(err){
                 res.status(400).send(err);
             }
