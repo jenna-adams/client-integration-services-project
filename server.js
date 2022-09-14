@@ -8,7 +8,7 @@ import express from 'express';   // call express or us import express from 'expr
 const app = express();             // define app using express
 import bodyParser from 'body-parser';
 import usersRoutes from './routes/users.js';
-import authRoutes from '.routes/auth.js'
+import authRoutes from './routes/auth.js'
 
 
 const PORT = process.env.PORT || 5432;
@@ -19,7 +19,7 @@ app.use(express.json());
 
 app.use('/users', usersRoutes);
 
-app.use('authenticate', authRoutes);
+app.use('/authenticate', authRoutes);
 
 // Routes for API
 // ======================================================================
