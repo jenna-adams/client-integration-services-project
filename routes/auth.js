@@ -4,6 +4,9 @@ import jwt from "jsonwebtoken";
 import jwtDecode from "jwt-decode";
 import res, { send } from "express/lib/response";
 import { user } from "pg/lib/defaults";
+import client from '../db/database.js';
+import queries from '../routes/queries.js';
+
 
 // set router
 const router = express.Router();
