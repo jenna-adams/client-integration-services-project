@@ -1,6 +1,7 @@
 import express from "express";
 import database from "database";
 import jwt from "jsonwebtoken";
+import jwtDecode from "jwt-decode";
 import res, { send } from "express/lib/response";
 import { user } from "pg/lib/defaults";
 
@@ -36,8 +37,10 @@ router
                     userInfo = json(results.rows);
                 })
 
+                var encodedToken = jwt.encode({fullname : user[fullName], username : userInfo[username]}, "code", 'HS256')
+
                 const response = {
-                    api_token : token,
+                    api_token : encodedToken,
                     full_name : userInfo[fullName],
                     menu_code : userInfo[menu],
                     dashboard_code : userInfo[dashboard],

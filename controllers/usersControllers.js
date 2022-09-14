@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 import client from '../db/database.js';
 import queries from '../routes/queries.js';
 
-//let key = "DaMubrFe55czTp8zsORTdZU2LtwXMURs9EVI3i4x3s8";
+
 
 export const getUsers = (req, res) => {
     client.query(queries.getUsers, (error, results) => {
@@ -34,16 +34,16 @@ export const createUser = (req, res) => {
     });
 };
 
-// export const getUser = (req, res) => {
-//     const username = parseInt(req.params.username);
-//     client.query(queries.getUser, [username], (error, results) => {
-//         if (error) {
-//             res.send("There is an error/ get user auth");
-//             throw error;
-//         }
-//         res.status(200).json(results.rows);
-//     })
-// };
+export const getUser = (req, res) => {
+    const username = parseInt(req.params.username);
+    client.query(queries.getUser, [username], (error, results) => {
+        if (error) {
+            res.send("There is an error/ get user auth");
+            throw error;
+        }
+        res.status(200).json(results.rows);
+    })
+};
 
 export const deleteUser = (req, res) => {
     const id = parseInt(req.params.id);
