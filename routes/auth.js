@@ -58,3 +58,5 @@ router.get('authenticate/:token', async (req, res) => {
         }
 
     });
+
+    export default router;
