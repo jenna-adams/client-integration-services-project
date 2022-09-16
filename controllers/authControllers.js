@@ -1,10 +1,10 @@
+import express from 'express';
 import client from '../db/database.js';
 import queries from '../routes/queries.js';
 
 export const getAuthToken = (res, req) => {
 
-    const myHeaders = new Headers();
-    const eleosPlatformKey = myHeaders.get('eleosPlatformKey');
+    const eleosPlatformKey = req.get('eleosPlatformKey');
     if(eleosPlatformKey != process.env.ELEOS_PLATFORM_KEY) {
         res.status(401).send("401: broked Eleos Platform Key");
         }
