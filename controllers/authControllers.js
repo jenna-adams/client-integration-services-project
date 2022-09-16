@@ -3,10 +3,10 @@ import queries from '../routes/queries.js';
 
 export const getAuthToken = async (req, res) => {
 
-    // if(req.headers.Authorization != process.env.ELEOS_PLATFORM_KEY) {
-    //     res.send("401: broked Eleos Platform Key");
-    // }
-    // else {
+    if(req.headers.Authorization != process.env.ELEOS_PLATFORM_KEY) {
+        res.send("401: broked Eleos Platform Key");
+    }
+    else {
         try{
             const token = req.params.token;
             // var decodedToken = jwtDecode(token);
@@ -20,27 +20,27 @@ export const getAuthToken = async (req, res) => {
                 res.status(200).json(results.rows);
             })
 
-            // var encodedToken = jwt.encode({fullname : user[fullName], username : userInfo[username]}, "code", 'HS256')
+            var encodedToken = jwt.encode({fullname : user[fullName], username : userInfo[username]}, "code", 'HS256')
 
-            // const response = {
-            //     api_token : encodedToken,
-            //     full_name : userInfo[fullName],
-            //     menu_code : userInfo[menu],
-            //     dashboard_code : userInfo[dashboard],
-            //     custom_settings_form_code : userInfo[settingForm],
-            //     theme : userInfo[theme],
-            //     username : user[username] 
-            // }
+            const response = {
+                api_token : encodedToken,
+                full_name : userInfo[fullName],
+                menu_code : userInfo[menu],
+                dashboard_code : userInfo[dashboard],
+                custom_settings_form_code : userInfo[settingForm],
+                theme : userInfo[theme],
+                username : user[username] 
+            }
             // res.status(200).send(userInfo);
 
         }catch(error){
             res.send(error);
         }
-    // }
+     }
 
 };
 
-export const postAuth = (res, req) => {
+export const postAuth = (req, res) => {
     // if(req.headers["eleos-platform-key"] != process.env.ELEOS_PLATFORM_KEY) {
     //     res.status(401).send("401: broked Eleos Platform Key");
     //     }
@@ -54,7 +54,7 @@ export const postAuth = (res, req) => {
     // }
 }
 
-export const putAuth = (res, req) => {
+export const putAuth = (req, res) => {
     // if(req.headers["eleos-platform-key"] != process.env.ELEOS_PLATFORM_KEY) {
     //     res.status(401).send("401: broked Eleos Platform Key");
     //     }
