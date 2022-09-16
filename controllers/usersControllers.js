@@ -38,7 +38,7 @@ export const getUser = (req, res) => {
     const username = parseInt(req.params.username);
     client.query(queries.getUser, [username], (error, results) => {
         if (error) {
-            res.send("There is an error/ get user auth");
+            res.send(error);
             throw error;
         }
         res.status(200).json(results.rows);
