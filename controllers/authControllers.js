@@ -2,7 +2,6 @@ import client from '../db/database.js';
 import queries from '../routes/queries.js';
 
 export const getAuthToken = (res, req) => {
-    console.log(JSON.stringify(req.headers));
     if(req.headers["eleos-platform-key"] != process.env.ELEOS_PLATFORM_KEY) {
         res.status(401).send("401: broked Eleos Platform Key");
         }
@@ -33,9 +32,37 @@ export const getAuthToken = (res, req) => {
             // }
             res.status(200).send(userInfo);
 
-        }catch(err){
-            res.status(400).send(err);
+        }catch(error){
+            res.status(400).send(error);
         }
     }
 
+};
+
+export const postAuth = (res, req) => {
+    if(req.headers["eleos-platform-key"] != process.env.ELEOS_PLATFORM_KEY) {
+        res.status(401).send("401: broked Eleos Platform Key");
+        }
+    else {
+        try{
+            res.send("postAuth works!! well, it gets past the platform key");
+        }
+        catch(error){
+            res.status(400).send(error);
+        }
+    }
+}
+
+export const putAuth = (res, req) => {
+    if(req.headers["eleos-platform-key"] != process.env.ELEOS_PLATFORM_KEY) {
+        res.status(401).send("401: broked Eleos Platform Key");
+        }
+    else {
+        try{
+            res.send("putAuth works!! well, it gets past the platform key");
+        }
+        catch(error){
+            res.status(400).send(error);
+        }
+    }
 }
