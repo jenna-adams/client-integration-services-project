@@ -1,5 +1,7 @@
 import client from '../db/database.js';
 import queries from '../routes/queries.js';
+import dotenv from 'dotenv';
+dotenv.config();
 
 export const getAuthToken = async (req, res) => {
 
