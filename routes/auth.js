@@ -24,7 +24,7 @@ router
           }
         else {
             try{
-                const token = req.params.token
+                const { token } = req.params.token
                 var decodedToken = jwtDecode(token)
                 var userToken = Object.values(decodedToken)
                 var userInfo
@@ -47,7 +47,7 @@ router
                     theme : userInfo[theme],
                     username : user[username] 
                 }
-                res.status(200).send('hi');
+                res.status(200).send(response);
 
             }catch(err){
                 res.status(400).send(err);
