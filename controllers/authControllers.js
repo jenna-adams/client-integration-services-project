@@ -6,7 +6,7 @@ export const getAuthToken = (res, req) => {
 
     const eleosPlatformKey = req.get('eleosPlatformKey');
     if(eleosPlatformKey != process.env.ELEOS_PLATFORM_KEY) {
-        res.status(401).send("401: broked Eleos Platform Key");
+        res.send("401: broked Eleos Platform Key");
         }
     else {
         try{
