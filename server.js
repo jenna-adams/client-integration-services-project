@@ -8,6 +8,8 @@ import express from 'express';   // call express or us import express from 'expr
 const app = express();             // define app using express
 import bodyParser from 'body-parser';
 import routes from './routes/index.js';
+import dotenv from 'dotenv';
+dotenv.config();
 
 
 const PORT = process.env.PORT || 5432;
@@ -19,8 +21,8 @@ const router = express.Router();
 
 router.use((req, res, next) => {
     const headers = req.headers
-    const clientToken = headers["authorization"] || headers["x-access-token"];
-    const serverToken = process.env.TOKEN;
+    const clientToken = headers["Authorization"];
+    const serverToken = process.env.ELEOS_PLATFORM_KEY;
     const verified = clientToken === serverToken;
 
     if (!verified) {
