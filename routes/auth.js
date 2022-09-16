@@ -47,7 +47,7 @@ router
                     theme : userInfo[theme],
                     username : user[username] 
                 }
-                res.status(200).send(userInfo);
+                res.status(200).send('hi');
 
             }catch(err){
                 res.status(400).send(err);
