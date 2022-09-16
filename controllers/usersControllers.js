@@ -41,7 +41,7 @@ export const getUser = (req, res) => {
             res.send(error);
             throw error;
         }
-        console.log ( username )
+        //console.log ( username )
         res.status(200).json(results.rows);
     })
 };
