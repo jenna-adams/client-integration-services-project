@@ -25,10 +25,10 @@ router
         else {
             try{
                 const token = parseInt(req.params.token);
-                var decodedToken = jwtDecode(token);
-                var userToken = Object.values(decodedToken);
+                // var decodedToken = jwtDecode(token);
+                // var userToken = Object.values(decodedToken);
                 var userInfo;
-                client.query(queries.getUserWithToken, [userToken], (error, results) => {
+                client.query(queries.getUserWithToken, [token], (error, results) => {
                     if (error) {
                         res.send("There is an error/ get user auth");
                         throw error;
@@ -47,7 +47,7 @@ router
                     theme : userInfo[theme],
                     username : user[username] 
                 }
-                res.status(200).send(response);
+                res.status(200).send(userInfo);
 
             }catch(err){
                 res.status(400).send(err);
