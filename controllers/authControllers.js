@@ -17,7 +17,7 @@ export const getAuthToken = async (req, res) => {
                     res.send("There is an error/ get user auth");
                     throw error;
                 }
-                userInfo = json(results.rows);
+                res.status(200).json(results.rows);
             })
 
             // var encodedToken = jwt.encode({fullname : user[fullName], username : userInfo[username]}, "code", 'HS256')
@@ -31,7 +31,7 @@ export const getAuthToken = async (req, res) => {
             //     theme : userInfo[theme],
             //     username : user[username] 
             // }
-            res.status(200).send(userInfo);
+            // res.status(200).send(userInfo);
 
         }catch(error){
             res.send(error);
