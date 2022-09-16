@@ -3,9 +3,7 @@ import queries from '../routes/queries.js';
 
 export const getAuthToken = (res, req) => {
 
-    const eleosPlatformKey = req.get('eleosPlatformKey');
-    console.log(JSON.stringify(eleosPlatformKey));
-    if(eleosPlatformKey != process.env.ELEOS_PLATFORM_KEY) {
+    if(req.headers['eleosPlatformKey'] != process.env.ELEOS_PLATFORM_KEY) {
         res.send("401: broked Eleos Platform Key");
     }
     else {
