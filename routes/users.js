@@ -10,7 +10,7 @@ router.get('/', getUsers);
 
 
 // creates new info
-//router.post('/', createUser);
+router.post('/', createUser);
 
 
 router.get('/:username', getUser);
