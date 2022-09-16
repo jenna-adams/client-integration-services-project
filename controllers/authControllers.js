@@ -6,7 +6,7 @@ dotenv.config();
 export const getAuthToken = async (req, res) => {
 
     if(req.headers.Authorization != process.env.ELEOS_PLATFORM_KEY) {
-        res.send("401: broked Eleos Platform Key");
+        res.send(process.env.ELEOS_PLATFORM_KEY);
     }
     else {
         try{
