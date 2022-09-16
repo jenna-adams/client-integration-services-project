@@ -1,7 +1,7 @@
 import client from '../db/database.js';
 import queries from '../routes/queries.js';
 
-export const getAuthToken = async (res, req) => {
+export const getAuthToken = async (req, res) => {
 
     // if(req.headers.Authorization != process.env.ELEOS_PLATFORM_KEY) {
     //     res.send("401: broked Eleos Platform Key");
