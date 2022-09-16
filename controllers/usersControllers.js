@@ -35,12 +35,13 @@ export const getUsers = (req, res) => {
 // };
 
 export const getUser = (req, res) => {
-    const username = parseInt(req.params.username);
+    const username = req.params.username;
     client.query(queries.getUser, [username], (error, results) => {
         if (error) {
             res.send(error);
             throw error;
         }
+        console.log ( username )
         res.status(200).json(results.rows);
     })
 };
