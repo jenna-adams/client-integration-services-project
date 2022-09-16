@@ -25,9 +25,9 @@ router
         else {
             try{
                 const token = parseInt(req.params.token);
-                var decodedToken = jwtDecode(token)
-                var userToken = Object.values(decodedToken)
-                var userInfo
+                var decodedToken = jwtDecode(token);
+                var userToken = Object.values(decodedToken);
+                var userInfo;
                 client.query(queries.getUserWithToken, [userToken], (error, results) => {
                     if (error) {
                         res.send("There is an error/ get user auth");
