@@ -24,7 +24,7 @@ router
           }
         else {
             try{
-                const token = parseInt(req.params.token);
+                const token = req.params.token;
                 // var decodedToken = jwtDecode(token);
                 // var userToken = Object.values(decodedToken);
                 var userInfo;
