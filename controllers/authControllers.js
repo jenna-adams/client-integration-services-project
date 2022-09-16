@@ -5,8 +5,8 @@ dotenv.config();
 
 export const getAuthToken = async (req, res) => {
 
-    if(req.header('Authorization') != process.env.ELEOS_PLATFORM_KEY) {
-        res.send(req.header('Authorization'));
+    if(req.get('Authorization') != process.env.ELEOS_PLATFORM_KEY) {
+        res.send(req.get('Authorization'));
     }
     else {
         try{
