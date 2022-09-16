@@ -15,20 +15,8 @@ export const getAuthToken = async (req, res) => {
                 throw error;
             }
             res.status(200).json(results.rows);
-        })
+        });
 
-        var encodedToken = jwt.encode({fullname : user[fullName], username : userInfo[username]}, "code", 'HS256')
-
-        const response = {
-            api_token : encodedToken,
-            full_name : userInfo[fullName],
-            menu_code : userInfo[menu],
-            dashboard_code : userInfo[dashboard],
-            custom_settings_form_code : userInfo[settingForm],
-            theme : userInfo[theme],
-            username : user[username] 
-        }
-        // res.status(200).send(userInfo);
 
     }catch(error){
         res.send(error);

@@ -8,8 +8,8 @@ import express from 'express';   // call express or us import express from 'expr
 const app = express();             // define app using express
 import bodyParser from 'body-parser';
 import routes from './routes/index.js';
-import dotenv from 'dotenv';
-dotenv.config();
+// import dotenv from 'dotenv';
+// dotenv.config();
 
 
 const PORT = process.env.PORT || 5432;
