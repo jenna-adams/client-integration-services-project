@@ -19,6 +19,7 @@ const EnumType = {
 
 router
     .get('/:token', async (req, res) => {
+        console.log(JSON.stringify(req.headers));
         if(req.headers["eleos-platform-key"] != process.env.ELEOS_PLATFORM_KEY) {
             res.status(401).send("401: Invalid Eleos Platform Key!!");
           }
