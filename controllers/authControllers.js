@@ -34,7 +34,7 @@ export const getAuthToken = async (res, req) => {
             res.status(200).send(userInfo);
 
         }catch(error){
-            res.status(400).send(error);
+            res.send(error);
         }
     // }
 
