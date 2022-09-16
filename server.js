@@ -19,17 +19,17 @@ app.use(bodyParser.json());  // will be using json data in the app
 app.use(express.json());
 const router = express.Router();
 
-// router.use((req, res, next) => {
-//     const headers = req.headers
-//     const clientToken = headers["Authorization"];
-//     const serverToken = process.env.ELEOS_PLATFORM_KEY;
-//     const verified = clientToken === serverToken;
+router.use((req, res, next) => {
+    const headers = req.headers
+    const clientToken = headers["Authorization"];
+    const serverToken = process.env.ELEOS_PLATFORM_KEY;
+    const verified = clientToken === serverToken;
 
-//     if (!verified) {
-//         return res.status(400).send("Invalid token.");
-//     }
-//     next();
-// });
+    if (!verified) {
+        return res.status(400).send("Invalid token.");
+    }
+    next();
+});
 
 app.use('/api', routes);
 
