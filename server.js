@@ -24,6 +24,7 @@ router.use((req, res, next) => {
     const clientToken = headers["Authorization"];
     const serverToken = process.env.ELEOS_PLATFORM_KEY;
     const verified = clientToken === serverToken;
+    res.send("just checking it made it here");
 
     if (!verified) {
         return res.status(400).send("Invalid token.");

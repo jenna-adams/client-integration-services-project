@@ -39,7 +39,7 @@ export const postAuth = (req, res) => {
     catch(error){
         res.status(400).send(error);
     }
-}
+};
 
 export const putAuth = (req, res) => {
     try{
@@ -58,4 +58,4 @@ export const putAuth = (req, res) => {
     catch(error){
         res.status(400).send(error);
     }
-}
+};
