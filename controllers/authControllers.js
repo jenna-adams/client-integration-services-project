@@ -17,8 +17,6 @@ export const getAuthToken = async (req, res) => {
             }
             res.status(200).json(results.rows);
         });
-
-
     }catch(error){
         res.send(error);
     }

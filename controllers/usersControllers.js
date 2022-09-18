@@ -3,7 +3,7 @@ import client from '../db/database.js';
 import queries from '../routes/queries.js';
 
 
-
+// get all users
 export const getUsers = (req, res) => {
     client.query(queries.getUsers, (error, results) => {
         if (error) {
@@ -14,6 +14,7 @@ export const getUsers = (req, res) => {
     });
 };
 
+// make a new user
 export const createUser = (req, res) => {
     const { fullName, api_token, menu_code, dashboard_code, custom_settings_form_code, theme, username } = req.body;
     //check if id exists
@@ -34,6 +35,8 @@ export const createUser = (req, res) => {
     });
 };
 
+
+// get a specific user based on username
 export const getUser = (req, res) => {
     const username = req.params.username;
     client.query(queries.getUser, [username], (error, results) => {
@@ -46,16 +49,17 @@ export const getUser = (req, res) => {
     })
 };
 
+// delete user per username
 export const deleteUser = (req, res) => {
-    const id = parseInt(req.params.id);
+    const username = req.params.username;
     // does the student no exist?
-    client.query(queries.checkUserId, [id], (error, results) => {
+    client.query(queries.checkUserUsername, [username], (error, results) => {
         const noUserFound = !results.rows.length;
         if (noUserFound) {
             res.send("User does not exist.");
         }
 
-        client.query(queries.removeUser, [id], (error, results) => {
+        client.query(queries.removeUser, [username], (error, results) => {
             if (error) {
                 res.send("There is an error/ delete user");
                 throw error;
@@ -65,6 +69,8 @@ export const deleteUser = (req, res) => {
     });
 };
 
+
+// edit a user
 export const putUser = (req, res) => {
     const id = parseInt(req.params.id);
     const { firstName } = req.body;
