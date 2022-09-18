@@ -21,7 +21,7 @@ const router = express.Router();
 
 router.use((req, res, next) => {
     const headers = req.headers
-    const clientToken = headers["Authorization"];
+    const clientToken = headers["Eleos-Platform-Key"];
     const serverToken = process.env.ELEOS_PLATFORM_KEY;
     const verified = clientToken === serverToken;
     res.send("just checking it made it here");

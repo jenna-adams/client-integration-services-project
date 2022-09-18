@@ -7,7 +7,7 @@ const addUserToDb = "INSERT INTO test_table (id, firstName, lastName, age) VALUE
 const removeUser = "DELETE FROM test_table WHERE id = $1";
 const updateUser = "UPDATE test_table SET firstName = $1 WHERE id = $2";
 const getLoads = "SELECT * FROM loads";
-
+const getTrucks = "SELECT * FROM trucks";
 export default{
     getUsers,
     getUser,
