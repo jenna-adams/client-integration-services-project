@@ -1,1 +1,0 @@
-<?php include_once("appUI/index.html"); ?>
