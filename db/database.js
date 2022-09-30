@@ -16,7 +16,7 @@ import dotenv from 'dotenv';
 const {Client} = pg;
 dotenv.config();
 const client = new Client({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: "postgres://integration_db_o7gq_user:QHluCBFd49yHzULXAQ7FPaPWz2P5t2wO@dpg-ccqc8kpgp3jkaoub4sb0-a.ohio-postgres.render.com/integration_db_o7gq",
   ssl: {
     rejectUnauthorized: false
   }
