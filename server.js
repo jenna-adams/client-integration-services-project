@@ -10,6 +10,7 @@ import bodyParser from 'body-parser';
 import routes from './routes/index.js';
 // import dotenv from 'dotenv';
 // dotenv.config();
+import html from '/index.html'
 
 
 const PORT = process.env.PORT || 5432;
@@ -35,7 +36,10 @@ router.use((req, res, next) => {
 // Make it pretty
 // ======================================================================
 
-app.get('/', (req, res) => res.type('html').send(html));
+router.get('/',function(req,res){
+    res.sendFile(path.join(__dirname+'/appUI/index.html'));
+    //__dirname : It will resolve to your project folder.
+  });
 
 // Routes for API
 // ======================================================================
@@ -50,31 +54,3 @@ app.use('/api', routes);
 app.listen(PORT, () => console.log(`Server Running on port: http://localhost:${PORT}`));
 
 
-
-const html = `
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" href="style/stylesheet.css">
-<title>Jenna's Demo Service
-</title>
-</head>
-<body>
-    <h1>Jenna's Demo Service</h1>
-    <for action="/api/user" method="POST">
-        <label for="fame">Full name:</label>
-        <input type="text" id="fname" name="fname"><br>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username"><br>
-        <label for="token">Token:</label>
-        <input type="text" id="token" name="token"><br>
-        <input type="submit" value="Submit">
-      </form>
-
-</body>
-<footer>
-    <a href="https://github.com/jen000/client-integration-services-project" alt = "Link to source code" > </a>
-    ©Copyright 2022 by Jenna Adams. All rights reversed.
-</footer>
-</html>
-`
