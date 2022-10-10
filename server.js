@@ -32,12 +32,15 @@ router.use((req, res, next) => {
     next();
 });
 
-app.use('/api', routes);
-
 // Routes for API
 // ======================================================================
 
-app.get('/', (req, res) => res.send('Hello from Homepage.'));
+app.use('/api', routes);
+
+// Make it pretty
+// ======================================================================
+
+app.get('/', (req, res) => res.type('html').send(html));
 
 
 // START THE SERVER
@@ -45,3 +48,32 @@ app.get('/', (req, res) => res.send('Hello from Homepage.'));
 
 app.listen(PORT, () => console.log(`Server Running on port: http://localhost:${PORT}`));
 
+
+
+const html = `
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style/stylesheet.css">
+<title>Jenna's Demo Service
+</title>
+</head>
+<body>
+    <h1>Jenna's Demo Service</h1>
+    <for action="/api/user" method="POST">
+        <label for="fame">Full name:</label>
+        <input type="text" id="fname" name="fname"><br>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br>
+        <label for="token">Token:</label>
+        <input type="text" id="token" name="token"><br>
+        <input type="submit" value="Submit">
+      </form>
+
+</body>
+<footer>
+    <a href="https://github.com/jen000/client-integration-services-project" alt = "Link to source code" > </a>
+    ©Copyright 2022 by Jenna Adams. All rights reversed.
+</footer>
+</html>
+`
