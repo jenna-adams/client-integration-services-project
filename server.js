@@ -32,15 +32,16 @@ router.use((req, res, next) => {
     next();
 });
 
+// Make it pretty
+// ======================================================================
+
+app.get('/', (req, res) => res.type('html').send(html));
+
 // Routes for API
 // ======================================================================
 
 app.use('/api', routes);
 
-// Make it pretty
-// ======================================================================
-
-app.get('/', (req, res) => res.type('html').send(html));
 
 
 // START THE SERVER
