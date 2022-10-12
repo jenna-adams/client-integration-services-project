@@ -8,6 +8,7 @@ import express from 'express';   // call express or us import express from 'expr
 const app = express();             // define app using express
 import bodyParser from 'body-parser';
 import routes from './routes/index.js';
+import path from 'path';
 // import dotenv from 'dotenv';
 // dotenv.config();
 
@@ -32,12 +33,21 @@ router.use((req, res, next) => {
     next();
 });
 
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname,"/appUI")))
+
 // Make it pretty
 // ======================================================================
 
-router.get('/',function(req,res){
-    res.sendFile(path.join(__dirname+'/appUI/index.html'));
-    //__dirname : It will resolve to your project folder.
+app.get('/', (req,res) => {
+    try{
+        res.sendFile(path.join(__dirname, '/appUI/index.html'));
+        //__dirname : It will resolve to your project folder.
+    }
+    catch(err){
+        console.log(err)
+        res.send("Error: " + err);
+    }
   });
 
 // Routes for API
