@@ -10,7 +10,6 @@ import bodyParser from 'body-parser';
 import routes from './routes/index.js';
 // import dotenv from 'dotenv';
 // dotenv.config();
-import html from '/index.html'
 
 
 const PORT = process.env.PORT || 5432;
