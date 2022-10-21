@@ -2,14 +2,16 @@ function buttonClicked(){
     location.assign('https://jenna-client-services-integration.onrender.com/api/users');
 }
 
-function handleSubmit(event) {
-    event.preventDefault();
-    const data = new FormData(event.target);
-    const value = Object.fromEntries(data.entries());
-    value.topics = data.getAll("topics");
-    console.log({ value });
-  }
+const thisForm = document.getElementById('form');
+thisForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const formData = new FormData(thisForm).entries()
+    const response = await fetch('https://reqres.in/api/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(formData))
+    });
 
-
-  const form = document.querySelector("form");
-  form.addEventListener("submit", handleSubmit);
+    const result = await response.json();
+    console.log(result)
+});
