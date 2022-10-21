@@ -6,8 +6,9 @@ const thisForm = document.getElementById('form');
 thisForm.addEventListener('submit', async function (e) {
     e.preventDefault();
     const formData = new FormData(thisForm).entries()
-    const response = await fetch('https://reqres.in/api/users', {
-        method: 'POST',
+    consolelog(fromEntries)
+    const response = await fetch('https://jenna-client-services-integration.onrender.com/api/users/' + 'JENNA', {
+        method: 'GET',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(Object.fromEntries(formData))
     });
