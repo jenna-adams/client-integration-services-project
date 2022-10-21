@@ -3,13 +3,10 @@ function buttonClicked(){
 }
 
 const thisForm = document.getElementById('form');
-console.log(thisForm)
-formData = new FormData(thisForm).entries()
-console.log(formData)
 thisForm.addEventListener('submit', async function (e) {
     e.preventDefault();
     const formData = new FormData(thisForm).entries()
-    consolelog(fromEntries)
+    console.log(formData)
     const response = await fetch('https://jenna-client-services-integration.onrender.com/api/users/', {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
