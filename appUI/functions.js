@@ -3,7 +3,7 @@ function buttonClicked(){
 }
 
 const thisForm = document.getElementById('form');
-console.log(thisform)
+console.log(thisForm)
 formData = new FormData(thisForm).entries()
 console.log(formData)
 thisForm.addEventListener('submit', async function (e) {
