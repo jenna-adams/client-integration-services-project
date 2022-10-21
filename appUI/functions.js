@@ -2,8 +2,8 @@ function buttonClicked(){
     location.assign('https://jenna-client-services-integration.onrender.com/api/users');
 }
 
-const thisForm = document.getElementById('form');
-thisForm.addEventListener('submit', async function (e) {
+const thisForm = document.getElementById('userForm');
+thisForm.addEventListener('click', async function (e) {
     e.preventDefault();
     const formData = new FormData(thisForm).entries()
     console.log(formData)
