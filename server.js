@@ -9,12 +9,14 @@ const app = express();             // define app using express
 import bodyParser from 'body-parser';
 import routes from './routes/index.js';
 import path from 'path';
+
 // import dotenv from 'dotenv';
 // dotenv.config();
 
 
 const PORT = process.env.PORT || 5432;
 app.use(bodyParser.json());  // will be using json data in the app
+
 
 // middleware
 app.use(express.json());
