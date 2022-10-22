@@ -3,11 +3,11 @@ function buttonClicked(){
 }
 
 function userButton(){
-    userValue = document.getElementById('token').ariaValueMax;
+    const userValue = document.getElementById('token').value;
     console.log(userValue)
 }
 
 function loadButton(){
-    loadValue = document.getElementById('loadID').ariaValueMax;
+    const loadValue = document.getElementById('loadID').value;
     console.log(loadValue)
 }
